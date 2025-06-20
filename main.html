@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iglesia Gran Comisión Comayagua</title>
+    <!-- CDN de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fuentes de Google: Inter (predeterminada) y Montserrat (para encabezados) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ECECEC; /* Fondo gris claro ligeramente más oscuro */
+            color: #374151; /* Texto gris oscuro */
+        }
+        .hero-heading-font {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .hero-main-heading-font {
+            font-family: 'Playfair Display', serif; /* Nueva fuente para "Amarás la diferencia" */
+        }
+        /* Estilos personalizados para enlaces de navegación */
+        .nav-link-item {
+            position: relative;
+            display: block;
+            padding: 0.5rem 1rem;
+            color: white;
+            transition: color 0.3s ease-in-out;
+        }
+        .nav-link-item::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: #1c64f2; /* Subrayado azul */
+            transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+        .nav-link-item:hover::after {
+            width: 100%;
+            left: 0;
+            transform: translateX(0);
+        }
+        .nav-link-item:hover {
+            color: #bfdbfe; /* Azul más claro al pasar el ratón */
+        }
+
+        /* Relación de aspecto personalizada para videos y calendarios incrustados */
+        .responsive-embed-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+
+        .responsive-embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <!-- Contenedor principal del contenido -->
+    <div id="main-content-wrapper" class="w-full transition-all duration-300 ease-in-out">
+        <main class="flex-grow pt-0">
+            <!-- Sección Principal (Hero Section) -->
+            <section class="relative bg-gray-200 py-8 md:py-16">
+                <div class="container mx-auto px-4 flex justify-center">
+                    <!-- Contenedor principal con borde blanco -->
+                    <div class="bg-white rounded-lg shadow-xl overflow-hidden max-w-4xl w-full border-4 border-white">
+                        <!-- Contenedor de la Imagen y el Logo -->
+                        <div class="relative w-full" style="padding-bottom: 39.0625%;"> <!-- Relación de aspecto 1920x750 -->
+                            <img src="images/headerfondo.jpg" alt="Imagen del edificio de la iglesia" class="absolute inset-0 w-full h-full object-cover">
+                            <!-- Logo de IGC Comayagua con fondo blanco y cuadrado -->
+                            <div class="absolute top-4 left-4 bg-white rounded-md flex items-center justify-center p-2" style="width: 150px; height: 150px;">
+                                <img src="images\logo1.svg" alt="Logo de IGC Comayagua" class="w-full h-full object-contain">
+                            </div>
+                        </div>
+                        <!-- Contenedor para los nuevos botones de navegación con degradado -->
+                        <div class="bg-gradient-to-t from-[#424044] to-transparent text-white p-4 flex flex-wrap justify-center items-center gap-4 border-b border-gray-700">
+                            <a href="#primeros-pasos" class="border border-white text-white py-2 px-6 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200">Primeros Pasos</a>
+                            <a href="#conferencias" class="border border-white text-white py-2 px-6 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200">Conferencias</a>
+                            <a href="#recursos" class="border border-white text-white py-2 px-6 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200">Recursos</a>
+                            <a href="#calendario" class="border border-white text-white py-2 px-6 rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200">Calendario</a>
+                        </div>
+                        <!-- Contenedor de Texto y Botón ahora con fondo sólido -->
+                        <div class="p-6 md:p-8 text-center bg-[#424044] text-white">
+                            <h2 class="text-3xl md:text-5xl font-extrabold hero-main-heading-font mb-4 leading-tight drop-shadow-lg">
+                                Amarás la diferencia
+                            </h2>
+                            <!-- Se eliminó el párrafo "somos una iglesia que hace discípulos." -->
+                            <!-- Se eliminó el botón "Conoce Más" -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Primeros Pasos -->
+            <section id="primeros-pasos" class="py-16 bg-white">
+                <div class="container mx-auto px-4 text-center">
+                    <h3 class="text-4xl font-bold text-gray-800 mb-12 hero-heading-font">Da tus primeros pasos</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Tarjeta 1: Soy Nuevo Aquí -->
+                        <div class="p-6 bg-blue-50 rounded-lg shadow-lg flex flex-col items-center text-center">
+                            <i class="fas fa-church text-blue-600 text-5xl mb-4"></i>
+                            <h4 class="text-2xl font-semibold text-gray-800 mb-3">Soy Nuevo Aquí</h4>
+                            <p class="text-gray-600 mb-4">Descubre qué esperar en tu primera visita y cómo puedes conectar con nosotros.</p>
+                            <a href="#" class="text-blue-600 hover:underline font-medium">Más información &rarr;</a>
+                        </div>
+                        <!-- Tarjeta 2: Encuentra un Grupo de Crecimiento -->
+                        <div class="p-6 bg-green-50 rounded-lg shadow-lg flex flex-col items-center text-center">
+                            <i class="fas fa-handshake text-green-600 text-5xl mb-4"></i>
+                            <h4 class="text-2xl font-semibold text-gray-800 mb-3">Encuentra un Grupo de Crecimiento</h4>
+                            <p class="text-gray-600 mb-4">Encuentra una comunidad donde puedas crecer en tu fe y formar amistades.</p>
+                            <a href="https://forms.gle/2pQe1TpR1u5W111K7" class="text-blue-600 hover:underline font-medium">Encuentra un Grupo &rarr;</a>
+                        </div>
+                        <!-- Tarjeta 3: Lucas 10 -->
+                        <div class="p-6 bg-purple-50 rounded-lg shadow-lg flex flex-col items-center text-center">
+                            <i class="fas fa-hand-holding-heart text-purple-600 text-5xl mb-4"></i>
+                            <h4 class="text-2xl font-semibold text-gray-800 mb-3">Lucas 10</h4>
+                            <p class="text-gray-600 mb-4">Ministerio de ayuda para personas en necesidad.</p>
+                            <a href="#" class="text-blue-600 hover:underline font-medium">Conoce Más &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Conferencias -->
+            <section id="conferencias" class="py-16 bg-gray-100">
+                <div class="container mx-auto px-4">
+                    <h3 class="text-4xl font-bold text-gray-800 text-center mb-12 hero-heading-font">Conferencias</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Último Video de YouTube (requiere API Key para automatización real) -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl">
+                            <div class="responsive-embed-container">
+                                <!--
+                                    Para que esto sea automático, necesitarías la YouTube Data API y una clave de API.
+                                    Por ahora, puedes reemplazar 'VIDEO_ID_DEL_ULTIMO_VIDEO' con el ID del video más reciente.
+                                    Ejemplo: https://www.youtube.com/watch?v=VIDEO_ID_DEL_ULTIMO_VIDEO
+                                -->
+                                <iframe id="latest-youtube-video" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Último Video de IGC Comayagua" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-in; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-2xl font-semibold text-gray-800 mb-2">Último Video Destacado</h4>
+                                <p class="text-gray-600 text-sm mb-3" id="latest-video-date">Fecha: (Carga automática o manual)</p>
+                                <p class="text-gray-700 leading-relaxed mb-4" id="latest-video-description">Mantente al día con nuestros mensajes más recientes y contenido inspirador.</p>
+                                <a href="https://www.youtube.com/@igccomayagua" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-xl text-sm">Ver en YouTube</a>
+                            </div>
+                        </div>
+
+                        <!-- Conferencia Vertical 2025 -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl">
+                            <img src="https://placehold.co/600x400/FADBD8/000000?text=Vertical+2025" alt="Imagen de Conferencia Vertical 2025" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h4 class="text-2xl font-semibold text-gray-800 mb-2">Vertical 2025</h4>
+                                <p class="text-gray-600 text-sm mb-3">Marca registrada, el amor es nuestro dialecto.</p>
+                                <p class="text-gray-700 leading-relaxed mb-4">Días de adoración profunda y enseñanza transformadora.</p>
+                                <a href="https://youtube.com/playlist?list=PLtRnyoc4hKzELEUujB0Fp_JEyg7cUAfkk&si=lNaaDhqNAEoD01oR" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-xl text-sm">Ver en YouTube</a>
+                            </div>
+                        </div>
+
+                        <!-- Serie Bíblica: Entre dos mundos -->
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl">
+                            <img src="https://placehold.co/600x400/D1F2EB/000000?text=Entre+Dos+Mundos" alt="Imagen de Serie Bíblica" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h4 class="text-2xl font-semibold text-gray-800 mb-2">Serie: "Entre dos mundos"</h4>
+                                <p class="text-gray-600 text-sm mb-3">Última serie de predicaciones.</p>
+                                <p class="text-gray-700 leading-relaxed mb-4">Explora cómo vivir tu fe en el mundo actual con esta poderosa serie.</p>
+                                <a href="https://youtube.com/playlist?list=PL_DxCRJmU3Si7sQUMwqbzoL__t0u12CcF&si=Ge9U1BnWBJbQ3nlP" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl text-sm">Ver Serie Completa</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-12">
+                        <a href="https://www.youtube.com/@igccomayagua" target="_blank" class="bg-red-700 hover:bg-red-800 text-white font-bold py-3 px-6 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 text-lg">
+                            Visita Nuestro Canal de YouTube <i class="fab fa-youtube ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Recursos -->
+            <section id="recursos" class="py-16 bg-white">
+                <div class="container mx-auto px-4">
+                    <h3 class="text-4xl font-bold text-gray-800 text-center mb-12 hero-heading-font">Recursos para ti</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl">
+                            <img src="https://placehold.co/600x350/1ED760/FFFFFF?text=Spotify+Podcast" alt="Imagen de Spotify Podcast" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h4 class="text-2xl font-semibold text-gray-800 mb-2">Conferencias en Spotify</h4>
+                                <p class="text-gray-700 leading-relaxed mb-4">Escucha nuestras predicaciones y mensajes directamente en Spotify.</p>
+                                <a href="https://open.spotify.com/show/0ist1nXGrP3fI7Hw3CmH6t?si=f07f7bc0178a4409" target="_blank" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-xl text-sm">Escuchar en Spotify</a>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl">
+                            <img src="https://placehold.co/600x350/EAECEE/000000?text=Discipulado" alt="Imagen de Lecciones de Discipulado" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h4 class="text-2xl font-semibold text-gray-800 mb-2">Lecciones de Discipulado</h4>
+                                <p class="text-gray-700 leading-relaxed mb-4">Guías detalladas para tu crecimiento y desarrollo espiritual.</p>
+                            <a href="https://drive.google.com/drive/folders/195n8G1thwng7q9-jdQFx4yzeIqpLhrOH?usp=sharing" target="_blank" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-xl text-sm">Descargar Lecciones</a>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl">
+                            <img src="https://placehold.co/600x350/D4EFDF/000000?text=Evangelismo" alt="Imagen de Manual de Evangelismo" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h4 class="text-2xl font-semibold text-gray-800 mb-2">Manual de Evangelismo</h4>
+                                <p class="text-gray-700 leading-relaxed mb-4">Herramientas prácticas para compartir el evangelio y servir a tu comunidad.</p>
+                                <a href="https://drive.google.com/drive/folders/1X79rBpLzgLRS4o81b8NLO1gOEm3HbEDk?usp=sharing" target="_blank" class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-xl text-sm">Descargar Manual</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección de Calendario -->
+            <section id="calendario" class="py-16 bg-gray-100">
+                <div class="container mx-auto px-4">
+                    <h3 class="text-4xl font-bold text-gray-800 text-center mb-12 hero-heading-font">Nuestro Calendario de Eventos</h3>
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <div class="responsive-embed-container pb-[75%] sm:pb-[56.25%]"> <!-- Ajustado para la altura del móvil -->
+                            <!-- Google Calendar Embed en modo Agenda -->
+                            <iframe src="https://calendar.google.com/calendar/embed?src=NmExOTIyOTViYWEzNWJjOGUzN2JjNjVkZDZlYTJlNTQ4ZWJjOWM0NjZiOWE3ZmZlY2MwYmIzZjgxYjYwZmRkNEBncm91cC5jYWxlbmdaCi5nb29nbGUuY29t&mode=AGENDA&ctz=America/Tegucigalpa" style="border:solid 1px #777" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div> <!-- Fin del contenedor principal del contenido -->
+
+    <!-- Sección del Pie de Página -->
+    <footer class="bg-[#424044] text-white py-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <!-- Marcador de posición para el logo cuadrado -->
+                <img src="images\logo2.svg" alt="Logo de Gran Comisión Comayagua" class="mx-auto md:mx-0 mb-4 rounded-md" width="150" height="100">
+                <h4 class="text-xl font-bold mb-4 text-white">Gran Comisión Comayagua</h4>
+                <p class="text-gray-400 text-sm">Cámara de Comercio de Comayagua, salida a la libertad, Comayagua.</p>
+                <p class="text-400 text-sm">igccomayagua@gmail.com</p>
+                <p class="text-gray-400 text-sm">+504 9989-2913</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold mb-4 text-white">Enlaces Rápidos</h4>
+                <ul class="space-y-2">
+                    <li><a href="#primeros-pasos" class="text-gray-400 hover:text-white transition duration-300">Primeros Pasos</a></li>
+                    <li><a href="#conferencias" class="text-gray-400 hover:text-white transition duration-300">Conferencias</a></li>
+                    <li><a href="#recursos" class="text-gray-400 hover:text-white transition duration-300">Recursos</a></li>
+                    <li><a href="#calendario" class="text-gray-400 hover:text-white transition duration-300">Calendario</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold mb-4 text-white">Síguenos</h4>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <!-- Íconos de Redes Sociales (Font Awesome) -->
+                    <a href="https://www.facebook.com/igccomayagua" target="_blank" class="text-gray-300 hover:text-blue-300 transition duration-300"><i class="fab fa-facebook-f fa-2x"></i></a>
+                    <a href="https://www.instagram.com/igccomayagua" target="_blank" class="text-gray-300 hover:text-pink-300 transition duration-300"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="https://www.youtube.com/@igccomayagua" target="_blank" class="text-gray-300 hover:text-red-300 transition duration-300"><i class="fab fa-youtube fa-2x"></i></a>
+                    <a href="https://open.spotify.com/show/0ist1nXGrP3fI7Hw3CmH6t?si=f07f7bc0178a4409" target="_blank" class="text-gray-300 hover:text-green-300 transition duration-300"><i class="fab fa-spotify fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Iglesia Gran Comisión Comayagua. Todos los derechos reservados.</p>
+            <p class="mt-2">
+                <a href="#" class="text-blue-400 hover:text-blue-200 transition duration-300">Política de Privacidad</a> |
+                <a href="#" class="text-blue-400 hover:text-blue-200 transition duration-300">Términos de Servicio</a>
+            </p>
+        </div>
+    </footer>
+    <script>
+        // Desplazamiento suave para enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
