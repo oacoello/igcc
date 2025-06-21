@@ -101,6 +101,34 @@
                 background-position: 100px 100px; /* Mueve el patrón por el tamaño de la unidad del patrón para un loop diagonal perfecto */
             }
         }
+
+        /* Estilos para el tag "Más reciente" */
+        .latest-tag {
+            background-color: #FFFFFF; /* Fondo blanco para que coincida con los botones */
+            color: #DC2626; /* Texto rojo para que coincida con los botones (tailwind red-600) */
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px; /* Bordes completamente redondeados (píldora) */
+            font-size: 0.75rem; /* Pequeño tamaño de fuente */
+            font-weight: 600; /* Seminegrita */
+            position: absolute;
+            top: 0.5rem; /* Distancia desde arriba, más en la esquina */
+            left: 0.5rem; /* Distancia desde la izquierda, más en la esquina */
+            transform: rotate(-5deg); /* Ligera inclinación */
+            transform-origin: center;
+            animation: pulse-scale 2s infinite ease-in-out; /* Animación de pulso */
+            z-index: 20; /* Asegura que esté por encima de la imagen */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Pequeña sombra para pop */
+            border: 1px solid #DC2626; /* Borde rojo para que coincida con los botones */
+        }
+
+        @keyframes pulse-scale {
+            0%, 100% {
+                transform: rotate(-5deg) scale(1);
+            }
+            50% {
+                transform: rotate(-5deg) scale(1.05); /* Ligeramente más grande */
+            }
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -154,7 +182,7 @@
                             <i class="fas fa-handshake text-green-600 text-5xl mb-4"></i>
                             <h4 class="text-2xl font-semibold text-gray-800 mb-3">Encuentra un Grupo de Crecimiento</h4>
                             <p class="text-gray-600 mb-4">Encuentra una comunidad donde puedas crecer en tu fe y formar amistades.</p>
-                            <a href="https://forms.gle/2pQe1TpR1u5W111K7" class="text-blue-600 hover:underline font-medium">Encuentra un Grupo →</a>
+                            <a href="https://forms.gle/2pQe1TpR1u5W111K7" target="_blank" class="text-blue-600 hover:underline font-medium">Encuentra un Grupo →</a>
                         </div>
                         <div class="p-6 bg-purple-50 rounded-lg shadow-lg flex flex-col items-center text-center border-4 border-white">
                             <i class="fas fa-hand-holding-heart text-purple-600 text-5xl mb-4"></i>
@@ -174,6 +202,7 @@
                             <div id="latest-video-thumbnail-container" class="w-full h-48 relative overflow-hidden flex items-center justify-center">
                                 <div id="latest-video-blurred-bg" class="absolute inset-0 bg-cover bg-center" style="filter: blur(8px);"></div>
                                 <img id="latest-youtube-thumbnail" src="https://placehold.co/400x300/F0F4F8/334155?text=Cargando+Video..." alt="Miniatura del último video de YouTube" class="relative z-10 w-full h-full object-cover">
+                                <span class="latest-tag">Más reciente</span> <!-- Tag "Más reciente" añadido aquí -->
                             </div>
                             <div class="p-6">
                                 <h4 id="latest-video-title" class="text-2xl font-semibold text-gray-800 mb-2">Cargando último video...</h4>
@@ -216,7 +245,9 @@
                     <h3 class="text-4xl font-bold text-gray-800 text-center mb-12 section-title-font">Recursos para ti</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div class="p-6 bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
-                            <img src="images\recursos_podcast.jpg" alt="Image of Spotify Podcast" class="w-full h-48 object-cover">
+                            <div class="w-full relative" style="padding-bottom: 56.25%;"> <!-- Contenedor para mantener la relación de aspecto 16:9 -->
+                                <img src="images\recursos_podcast.jpg" alt="Image of Spotify Podcast" class="absolute inset-0 w-full h-full object-cover">
+                            </div>
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Conferencias en Spotify</h4>
                                 <p class="text-gray-700 leading-relaxed mb-4">Escucha nuestras predicaciones y mensajes directamente en Spotify.</p>
@@ -224,7 +255,9 @@
                             </div>
                         </div>
                         <div class="p-6 bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
-                            <img src="images\recursos_discipulado.jpg" alt="Image of Discipleship Lessons" class="w-full h-48 object-cover">
+                            <div class="w-full relative" style="padding-bottom: 56.25%;"> <!-- Contenedor para mantener la relación de aspecto 16:9 -->
+                                <img src="images\recursos_discipulado.jpg" alt="Image of Discipleship Lessons" class="absolute inset-0 w-full h-full object-cover">
+                            </div>
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Lecciones de Discipulado</h4>
                                 <p class="text-gray-700 leading-relaxed mb-4">Guías detalladas para tu crecimiento y desarrollo espiritual.</p>
@@ -232,7 +265,9 @@
                             </div>
                         </div>
                         <div class="p-6 bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:hover:shadow-xl border-4 border-white">
-                            <img src="images\recursos_evangelismo.jpg" alt="Image of Evangelism Manual" class="w-full h-48 object-cover">
+                            <div class="w-full relative" style="padding-bottom: 56.25%;"> <!-- Contenedor para mantener la relación de aspecto 16:9 -->
+                                <img src="images\recursos_evangelismo.jpg" alt="Image of Evangelism Manual" class="absolute inset-0 w-full h-full object-cover">
+                            </div>
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Manual de Evangelismo</h4>
                                 <p class="text-gray-700 leading-relaxed mb-4">Herramientas prácticas para compartir el evangelio y servir a tu comunidad.</p>
@@ -247,4 +282,142 @@
                 <div class="container mx-auto px-4 max-w-5xl">
                     <h3 class="text-4xl font-bold text-gray-800 text-center mb-12 hero-heading-font">Nuestro Calendario de Eventos</h3>
                     <div class="bg-white shadow-lg p-6 border-2 border-white rounded-lg">
-                        <div class="responsive-embed-container" style="padding-bottom: 700px; sm:padding-bottom: 75%; md:padding-bottom: 56.25%;"> <iframe sr
+                        <div class="responsive-embed-container" style="padding-bottom: 700px; sm:padding-bottom: 75%; md:padding-bottom: 56.25%;"> <iframe src="https://calendar.google.com/calendar/embed?src=6a192295baa35bc8e37bc65dd6ea2e548ebc9c466b9a7ffecc0bb3f81b60fdd4%40group.calendar.google.com&ctz=America%2FTegucigalpa" style="border:solid 1px #777" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div> <footer class="bg-[#424044] text-white py-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <img src="images\logo2.svg" alt="Logo de Gran Comisión Comayagua" class="mx-auto md:mx-0 mb-4 rounded-md" width="150" height="100">
+                <h4 class="text-xl font-bold mb-4 text-white">Gran Comisión Comayagua</h4>
+                <p class="text-gray-400 text-sm">Cámara de Comercio, Salida a La Libertad, Comayagua.</p>
+                <p class="text-400 text-sm">igccomayagua@gmail.com</p>
+                <p class="text-gray-400 text-sm">+504 9989-2913</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold mb-4 text-white">Enlaces Rápidos</h4>
+                <ul class="space-y-2">
+                    <li><a href="#primeros-pasos" class="text-gray-400 hover:text-white transition duration-300">Primeros Pasos</a></li>
+                    <li><a href="#conferencias" class="text-gray-400 hover:text-white transition duration-300">Conferencias</a></li>
+                    <li><a href="#recursos" class="text-gray-400 hover:text-white transition duration-300">Recursos</a></li>
+                    <li><a href="#calendario" class="text-gray-400 hover:text-white transition duration-300">Calendario</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold mb-4 text-white">Síguenos</h4>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="https://www.facebook.com/igccomayagua" target="_blank" class="text-gray-300 hover:text-blue-300 transition duration-300"><i class="fab fa-facebook-f fa-2x"></i></a>
+                    <a href="https://www.instagram.com/igccomayagua" target="_blank" class="text-gray-300 hover:text-pink-300 transition duration-300"><i class="fab fa-instagram fa-2x"></i></a>
+                    <a href="https://www.youtube.com/@igccomayagua" target="_blank" class="text-gray-300 hover:text-red-300 transition duration-300"><i class="fab fa-youtube fa-2x"></i></a>
+                    <a href="https://open.spotify.com/show/0ist1nXGrP3fI7Hw3CmH6t?si=f07f7bc0178a4409" target="_blank" class="text-gray-300 hover:text-green-300 transition duration-300"><i class="fab fa-spotify fa-2x"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Iglesia Gran Comisión Comayagua. All rights reserved.</p>
+            <p class="mt-2">
+                <a href="#" class="text-blue-400 hover:text-blue-200 transition duration-300">Privacy Policy</a> |
+                <a href="#" class="text-blue-400 hover:text-blue-200 transition duration-300">Terms of Service</a>
+            </p>
+        </div>
+    </footer>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Script para el Carrusel
+        const carouselImages = document.querySelectorAll('#carousel-images .carousel-image');
+        let currentImageIndex = 0;
+
+        function showImage(index) {
+            carouselImages.forEach(img => img.classList.remove('active'));
+            carouselImages[index].classList.add('active');
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+            showImage(currentImageIndex);
+        }
+
+        if (carouselImages.length > 0) {
+            showImage(currentImageIndex);
+        }
+        setInterval(nextImage, 5000);
+
+        // Script para obtener el último video de YouTube
+        async function fetchLatestYouTubeVideo() {
+            const channelId = 'UCBGcMqENptfdY3p34QQSeQw';
+            // Por favor, reemplaza 'TU_CLAVE_DE_API_DE_YOUTUBE_AQUI' con tu clave de API de Google válida.
+            // Asegúrate de que la 'YouTube Data API v3' esté habilitada para tu proyecto en Google Cloud Console.
+            const apiKey = 'AIzaSyAf7y3SVKsFGukX4ho9leVJ46tY59laFmQ'; 
+
+            const apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=1&type=video`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                if (data.items && data.items.length > 0) {
+                    const latestVideo = data.items[0];
+                    const videoId = latestVideo.id.videoId;
+                    const videoTitle = latestVideo.snippet.title;
+                    const videoDescription = latestVideo.snippet.description;
+                    const publishedAt = new Date(latestVideo.snippet.publishedAt).toLocaleDateString('es-ES', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                    const thumbnailUrl = latestVideo.snippet.thumbnails.high.url;
+
+                    const latestYoutubeThumbnail = document.getElementById('latest-youtube-thumbnail');
+                    const latestVideoBlurredBg = document.getElementById('latest-video-blurred-bg');
+
+                    latestYoutubeThumbnail.src = thumbnailUrl;
+                    latestYoutubeThumbnail.classList.remove('object-contain');
+                    latestYoutubeThumbnail.classList.add('object-cover');
+                    
+                    latestVideoBlurredBg.style.backgroundImage = `url('${thumbnailUrl}')`;
+
+                    document.getElementById('latest-video-title').textContent = videoTitle;
+                    document.getElementById('latest-video-date').textContent = `Fecha: ${publishedAt}`;
+                    document.getElementById('latest-video-description').textContent = videoDescription;
+                    document.getElementById('latest-video-youtube-link').href = `https://www.youtube.com/watch?v=${videoId}`;
+                } else {
+                    console.log('No se encontraron videos recientes.');
+                    document.getElementById('latest-video-title').textContent = 'No hay videos recientes disponibles.';
+                    document.getElementById('latest-video-description').textContent = 'Por favor, intente de nuevo más tarde.';
+                    const placeholderUrl = 'https://placehold.co/400x300/F0F4F8/334155?text=Video+No+Encontrado';
+                    document.getElementById('latest-youtube-thumbnail').src = placeholderUrl;
+                    document.getElementById('latest-youtube-thumbnail').classList.add('object-contain');
+                    document.getElementById('latest-video-blurred-bg').style.backgroundImage = `url('${placeholderUrl}')`;
+                }
+            } catch (error) {
+                console.error('Error al obtener el último video de YouTube:', error);
+                document.getElementById('latest-video-title').textContent = 'Error al cargar el video.';
+                document.getElementById('latest-video-description').textContent = 'Verifique su conexión o intente más tarde.';
+                const errorPlaceholderUrl = 'https://placehold.co/400x300/F0F4F8/334155?text=Error+de+Carga';
+                    document.getElementById('latest-youtube-thumbnail').src = errorPlaceholderUrl;
+                document.getElementById('latest-youtube-thumbnail').classList.add('object-contain');
+                document.getElementById('latest-video-blurred-bg').style.backgroundImage = `url('${errorPlaceholderUrl}')`;
+                }
+        }
+
+        window.onload = fetchLatestYouTubeVideo;
+    </script>
+</body>
+</html>
+
