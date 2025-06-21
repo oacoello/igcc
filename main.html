@@ -57,7 +57,7 @@
             width: 100%;
             height: 0;
             overflow: hidden;
-            border-radius: 0.5rem;
+            /* Se eliminó border-radius: 0.5rem; para las esquinas afiladas del calendario incrustado */
         }
 
         .responsive-embed-container iframe {
@@ -82,20 +82,34 @@
         .text-button-shadow {
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra más oscura y con blur */
         }
+
+        /* Estilos para el fondo de patrón animado */
+        .animated-pattern-bg {
+            /* SVG del icono de tu logo como patrón de fondo */
+            /* Apuntando al archivo SVG local, el efecto de "ladrillo" debe estar contenido en el SVG si es deseado */
+            background-image: url("images/pattern-logo.svg");
+            background-repeat: repeat;
+            background-size: 100px 100px; /* Tamaño más grande para la repetición del patrón, como se solicitó */
+            animation: movePattern 30s linear infinite; /* Animación de movimiento con una duración más lenta */
+        }
+
+        @keyframes movePattern {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 100px 100px; /* Mueve el patrón por el tamaño de la unidad del patrón para un loop diagonal perfecto */
+            }
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
-    <!-- Contenedor principal del contenido -->
     <div id="main-content-wrapper" class="w-full transition-all duration-300 ease-in-out">
         <main class="flex-grow pt-0">
-            <!-- Sección Principal (Hero Section) -->
-            <section class="relative bg-gray-200 py-8 md:py-16">
+            <section class="relative bg-gray-200 py-8 md:py-16 animated-pattern-bg">
                 <div class="container mx-auto px-4 flex justify-center">
-                    <!-- Contenedor principal con borde blanco -->
                     <div class="bg-white rounded-lg shadow-xl overflow-hidden max-w-4xl w-full border-4 border-white">
-                        <!-- Contenedor de la Imagen de Fondo, Logo, Degradado, Botones y Texto "Amarás la diferencia" -->
                         <div class="relative w-full pb-[70%] md:pb-[39.0625%] overflow-hidden">
-                            <!-- Carrusel de Imágenes -->
                             <div id="carousel-images" class="absolute inset-0">
                                 <img src="images\header_fondo_1.jpg" class="carousel-image active absolute inset-0 w-full h-full object-cover" alt="Imagen 1 del Carrusel">
                                 <img src="images\header_fondo_2.jpg" class="carousel-image absolute inset-0 w-full h-full object-cover" alt="Imagen 2 del Carrusel">
@@ -103,27 +117,21 @@
                                 <img src="images\header_fondo_4.jpg" class="carousel-image absolute inset-0 w-full h-full object-cover" alt="Imagen 4 del Carrusel">
                             </div>
 
-                            <!-- Overlay de degradado sobre la imagen -->
                             <div class="absolute inset-0 bg-gradient-to-t from-[#424044] to-transparent"></div>
 
-                            <!-- Logo de IGC Comayagua con fondo blanco y cuadrado, con padding interno y pegado a la esquina -->
-                            <div class="absolute top-0 left-4 bg-white flex items-center justify-center p-4" style="width: 150px; height: 150px;">
+                            <div class="absolute top-0 left-4 bg-white flex items-center justify-center p-4 w-24 h-24 md:w-[150px] md:h-[150px]">
                                 <img src="images\logo1.svg" alt="Logo de IGC Comayagua" class="w-full h-full object-contain">
                             </div>
 
-                            <!-- Contenedor para los botones de navegación, en vertical pegados a la derecha -->
-                            <!-- Añadido z-index para asegurar que los botones estén por encima de otros elementos -->
                             <div class="absolute top-1/2 -translate-y-1/2 right-4 text-white flex flex-col items-end gap-2 md:gap-4 z-10">
-                                <!-- Estos botones tienen fondo negro al 10% de opacidad Y sombra en el texto -->
                                 <a href="#primeros-pasos" class="border border-white text-white rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200 text-sm px-3 py-2 md:text-base md:px-6 md:py-2 shadow-md text-button-shadow bg-black bg-opacity-10">Primeros Pasos</a>
                                 <a href="#conferencias" class="border border-white text-white rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200 text-sm px-3 py-2 md:text-base md:px-6 md:py-2 shadow-md text-button-shadow bg-black bg-opacity-10">Conferencias</a>
                                 <a href="#recursos" class="border border-white text-white rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200 text-sm px-3 py-2 md:text-base md:px-6 md:py-2 shadow-md text-button-shadow bg-black bg-opacity-10">Recursos</a>
                                 <a href="#calendario" class="border border-white text-white rounded-lg hover:bg-white hover:text-gray-900 transition-colors duration-200 text-sm px-3 py-2 md:text-base md:px-6 md:py-2 shadow-md text-button-shadow bg-black bg-opacity-10">Calendario</a>
                             </div>
 
-                            <!-- Contenedor de Texto "Amarás la diferencia" - ahora dentro del área de la imagen, alineado a la izquierda -->
                             <div class="absolute bottom-4 left-4 w-full text-white pr-8 text-left">
-                                <h2 class="text-3xl md:text-5xl font-extrabold hero-main-heading-font leading-tight drop-shadow-lg">
+                                <h2 class="text-2xl md:text-5xl font-extrabold hero-main-heading-font leading-tight drop-shadow-lg">
                                     Amarás la<br>Diferencia
                                 </h2>
                             </div>
@@ -132,80 +140,65 @@
                 </div>
             </section>
 
-            <!-- Sección Primeros Pasos -->
             <section id="primeros-pasos" class="py-16 bg-white">
                 <div class="container mx-auto px-4 text-center max-w-5xl">
                     <h3 class="text-4xl font-bold text-gray-800 mb-12 section-title-font">Da tus primeros pasos</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <!-- Tarjeta 1: Soy Nuevo Aquí -->
                         <div class="p-6 bg-blue-50 rounded-lg shadow-lg flex flex-col items-center text-center border-4 border-white">
                             <i class="fas fa-church text-blue-600 text-5xl mb-4"></i>
                             <h4 class="text-2xl font-semibold text-gray-800 mb-3">Soy Nuevo Aquí</h4>
                             <p class="text-gray-600 mb-4">Descubre qué esperar en tu primera visita y cómo puedes conectar con nosotros.</p>
-                            <!-- Botón sin fondo negro transparente ni sombra en el texto -->
-                            <a href="#" class="text-blue-600 hover:underline font-medium">Más información &rarr;</a>
+                            <a href="#" class="text-blue-600 hover:underline font-medium">Más información →</a>
                         </div>
-                        <!-- Tarjeta 2: Encuentra un Grupo de Crecimiento -->
                         <div class="p-6 bg-green-50 rounded-lg shadow-lg flex flex-col items-center text-center border-4 border-white">
                             <i class="fas fa-handshake text-green-600 text-5xl mb-4"></i>
                             <h4 class="text-2xl font-semibold text-gray-800 mb-3">Encuentra un Grupo de Crecimiento</h4>
                             <p class="text-gray-600 mb-4">Encuentra una comunidad donde puedas crecer en tu fe y formar amistades.</p>
-                            <!-- Botón sin fondo negro transparente ni sombra en el texto -->
-                            <a href="https://forms.gle/2pQe1TpR1u5W111K7" class="text-blue-600 hover:underline font-medium">Encuentra un Grupo &rarr;</a>
+                            <a href="https://forms.gle/2pQe1TpR1u5W111K7" class="text-blue-600 hover:underline font-medium">Encuentra un Grupo →</a>
                         </div>
-                        <!-- Tarjeta 3: Lucas 10 -->
                         <div class="p-6 bg-purple-50 rounded-lg shadow-lg flex flex-col items-center text-center border-4 border-white">
                             <i class="fas fa-hand-holding-heart text-purple-600 text-5xl mb-4"></i>
                             <h4 class="text-2xl font-semibold text-gray-800 mb-3">Lucas 10</h4>
                             <p class="text-gray-600 mb-4">Ministerio de ayuda para personas en necesidad.</p>
-                            <!-- Botón sin fondo negro transparente ni sombra en el texto -->
-                            <a href="#" class="text-blue-600 hover:underline font-medium">Conoce Más &rarr;</a>
+                            <a href="#" class="text-blue-600 hover:underline font-medium">Conoce Más →</a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Sección de Conferencias -->
             <section id="conferencias" class="py-16 bg-gray-100">
                 <div class="container mx-auto px-4 max-w-5xl">
                     <h3 class="text-4xl font-bold text-gray-800 text-center mb-12 section-title-font">Conferencias</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Último Video de YouTube (requiere API Key para automatización real) -->
                         <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
-                            <!-- Container for the video thumbnail -->
-                            <div id="latest-video-thumbnail-container" class="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500">
-                                <!-- Placeholder or dynamically loaded image -->
-                                <img id="latest-youtube-thumbnail" src="https://placehold.co/400x300/F0F4F8/334155?text=Cargando+Video..." alt="Miniatura del último video de YouTube" class="w-full h-full object-cover">
+                            <div id="latest-video-thumbnail-container" class="w-full h-48 relative overflow-hidden flex items-center justify-center">
+                                <div id="latest-video-blurred-bg" class="absolute inset-0 bg-cover bg-center" style="filter: blur(8px);"></div>
+                                <img id="latest-youtube-thumbnail" src="https://placehold.co/400x300/F0F4F8/334155?text=Cargando+Video..." alt="Miniatura del último video de YouTube" class="relative z-10 w-full h-full object-cover">
                             </div>
                             <div class="p-6">
                                 <h4 id="latest-video-title" class="text-2xl font-semibold text-gray-800 mb-2">Cargando último video...</h4>
                                 <p class="text-gray-600 text-sm mb-3" id="latest-video-date">Fecha: </p>
                                 <p class="text-gray-700 leading-relaxed mb-4" id="latest-video-description">Obteniendo el video más reciente del canal de YouTube.</p>
-                                <!-- Link to watch on YouTube -->
                                 <a id="latest-video-youtube-link" href="https://www.youtube.com/@igccomayagua" target="_blank" class="border border-red-600 text-red-600 py-2 px-6 rounded-lg hover:bg-red-600 hover:text-white transition-colors duration-200 shadow-md">Ver en YouTube</a>
                             </div>
                         </div>
 
-                        <!-- Conferencia Vertical 2025 -->
                         <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
                             <img src="images\confe_vertical.jpg" alt="Imagen de Conferencia Vertical 2025" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Vertical 2025</h4>
                                 <p class="text-gray-600 text-sm mb-3">Abril 16-18, 2025. SPS Honduras</p>
                                 <p class="text-gray-700 leading-relaxed mb-4">Repasa los temas de nuestra conferencia anual de iglesias Gran Comisión.</p>
-                                <!-- Botón con el nuevo color #666cb1 -->
                                 <a href="https://youtube.com/playlist?list=PLtRnyoc4hKzELEUujB0Fp_JEyg7cUAfkk&si=lNaaDhqNAEoD01oR" target="_blank" class="border border-[#666cb1] text-[#666cb1] py-2 px-6 rounded-lg hover:bg-[#666cb1] hover:text-white transition-colors duration-200 shadow-md">Ver en YouTube</a>
                             </div>
                         </div>
 
-                        <!-- Serie de Conferencias del mes -->
                         <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
                             <img src="images\confe_serie.jpg" alt="Imagen de Serie Bíblica" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Serie: "Entre dos mundos"</h4>
                                 <p class="text-gray-600 text-sm mb-3">Última serie de predicaciones.</p>
                                 <p class="text-gray-700 leading-relaxed mb-4">Exploremos el contraste de ideologías, y como la Biblia se puede aplicar en un mundo actual.</p>
-                                <!-- Botón sin fondo negro transparente ni sombra en el texto -->
                                 <a href="https://youtube.com/playlist?list=PL_DxCRJmU3Si7sQUMwqbzoL__t0u12CcF&si=Ge9U1BnWBJbQ3nlP" target="_blank" class="border border-blue-600 text-blue-600 py-2 px-6 rounded-lg hover:bg-blue-600 hover:text-white transition-colors duration-200 shadow-md">Ver Serie Completa</a>
                             </div>
                         </div>
@@ -218,35 +211,31 @@
                 </div>
             </section>
 
-            <!-- Sección de Recursos -->
             <section id="recursos" class="py-16 bg-white">
                 <div class="container mx-auto px-4 max-w-5xl">
                     <h3 class="text-4xl font-bold text-gray-800 text-center mb-12 section-title-font">Recursos para ti</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
+                        <div class="p-6 bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
                             <img src="images\recursos_podcast.jpg" alt="Image of Spotify Podcast" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Conferencias en Spotify</h4>
                                 <p class="text-gray-700 leading-relaxed mb-4">Escucha nuestras predicaciones y mensajes directamente en Spotify.</p>
-                                <!-- Botón sin fondo negro transparente ni sombra en el texto -->
                                 <a href="https://open.spotify.com/show/0ist1nXGrP3fI7Hw3CmH6t?si=f07f7bc0178a4409" target="_blank" class="border border-green-600 text-green-600 py-2 px-6 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200 shadow-md">Escuchar en Spotify</a>
                             </div>
                         </div>
-                        <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
+                        <div class="p-6 bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
                             <img src="images\recursos_discipulado.jpg" alt="Image of Discipleship Lessons" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Lecciones de Discipulado</h4>
                                 <p class="text-gray-700 leading-relaxed mb-4">Guías detalladas para tu crecimiento y desarrollo espiritual.</p>
-                            <!-- Botón "Descargar Lecciones" con color #b54400 -->
-                            <a href="https://drive.google.com/drive/folders/195n8G1thwng7q9-jdQFx4yzeIqpLhrOH?usp=sharing" target="_blank" class="border border-[#b54400] text-[#b54400] py-2 px-6 rounded-lg hover:bg-[#b54400] hover:text-white transition-colors duration-200 shadow-md">Descargar Lecciones</a>
+                                <a href="https://drive.google.com/drive/folders/195n8G1thwng7q9-jdQFx4yzeIqpLhrOH?usp=sharing" target="_blank" class="border border-[#b54400] text-[#b54400] py-2 px-6 rounded-lg hover:bg-[#b54400] hover:text-white transition-colors duration-200 shadow-md">Descargar Lecciones</a>
                             </div>
                         </div>
-                        <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:hover:shadow-xl border-4 border-white">
+                        <div class="p-6 bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:hover:shadow-xl border-4 border-white">
                             <img src="images\recursos_evangelismo.jpg" alt="Image of Evangelism Manual" class="w-full h-48 object-cover">
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Manual de Evangelismo</h4>
                                 <p class="text-gray-700 leading-relaxed mb-4">Herramientas prácticas para compartir el evangelio y servir a tu comunidad.</p>
-                                <!-- Botón "Descargar Manual" con color #0059b5 -->
                                 <a href="https://drive.google.com/drive/folders/1X79rBpLzgLRS4o81b8NLO1gOEm3HbEDk?usp=sharing" target="_blank" class="border border-[#0059b5] text-[#0059b5] py-2 px-6 rounded-lg hover:bg-[#0059b5] hover:text-white transition-colors duration-200 shadow-md">Descargar Manual</a>
                             </div>
                         </div>
@@ -254,146 +243,8 @@
                 </div>
             </section>
 
-            <!-- Sección de Calendario -->
-            <section id="calendario" class="py-16 bg-gray-100">
+            <section id="calendario" class="py-16 bg-gray-100 animated-pattern-bg">
                 <div class="container mx-auto px-4 max-w-5xl">
                     <h3 class="text-4xl font-bold text-gray-800 text-center mb-12 hero-heading-font">Nuestro Calendario de Eventos</h3>
-                    <div class="bg-white rounded-lg shadow-lg p-8 border-4 border-white">
-                        <div class="responsive-embed-container" style="padding-bottom: 700px; sm:padding-bottom: 75%; md:padding-bottom: 56.25%;"> <!-- Ajustado para la altura del móvil -->
-                            <!-- Google Calendar Embed en modo Agenda -->
-                            <iframe src="https://calendar.google.com/calendar/embed?src=6a192295baa35bc8e37bc65dd6ea2e548ebc9c466b9a7ffecc0bb3f81b60fdd4%40group.calendar.google.com&ctz=America%2FTegucigalpa" style="border:solid 1px #777" frameborder="0" scrolling="no"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div> <!-- Fin del contenedor principal del contenido -->
-
-    <!-- Sección del Pie de Página -->
-    <footer class="bg-[#424044] text-white py-12">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-            <div>
-                <!-- Marcador de posición para el logo cuadrado -->
-                <img src="images\logo2.svg" alt="Logo de Gran Comisión Comayagua" class="mx-auto md:mx-0 mb-4 rounded-md" width="150" height="100">
-                <h4 class="text-xl font-bold mb-4 text-white">Gran Comisión Comayagua</h4>
-                <p class="text-gray-400 text-sm">Cámara de Comercio, Salida a La Libertad, Comayagua.</p>
-                <p class="text-400 text-sm">igccomayagua@gmail.com</p>
-                <p class="text-gray-400 text-sm">+504 9989-2913</p>
-            </div>
-            <div>
-                <h4 class="text-xl font-bold mb-4 text-white">Enlaces Rápidos</h4>
-                <ul class="space-y-2">
-                    <li><a href="#primeros-pasos" class="text-gray-400 hover:text-white transition duration-300">Primeros Pasos</a></li>
-                    <li><a href="#conferencias" class="text-gray-400 hover:text-white transition duration-300">Conferencias</a></li>
-                    <li><a href="#recursos" class="text-gray-400 hover:text-white transition duration-300">Recursos</a></li>
-                    <li><a href="#calendario" class="text-gray-400 hover:text-white transition duration-300">Calendario</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-xl font-bold mb-4 text-white">Síguenos</h4>
-                <div class="flex justify-center md:justify-start space-x-4">
-                    <!-- Íconos de Redes Sociales (Font Awesome) -->
-                    <a href="https://www.facebook.com/igccomayagua" target="_blank" class="text-gray-300 hover:text-blue-300 transition duration-300"><i class="fab fa-facebook-f fa-2x"></i></a>
-                    <a href="https://www.instagram.com/igccomayagua" target="_blank" class="text-gray-300 hover:text-pink-300 transition duration-300"><i class="fab fa-instagram fa-2x"></i></a>
-                    <a href="https://www.youtube.com/@igccomayagua" target="_blank" class="text-gray-300 hover:text-red-300 transition duration-300"><i class="fab fa-youtube fa-2x"></i></a>
-                    <a href="https://open.spotify.com/show/0ist1nXGrP3fI7Hw3CmH6t?si=f07f7bc0178a4409" target="_blank" class="text-gray-300 hover:text-green-300 transition duration-300"><i class="fab fa-spotify fa-2x"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="mt-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 Iglesia Gran Comisión Comayagua. All rights reserved.</p>
-            <p class="mt-2">
-                <a href="#" class="text-blue-400 hover:text-blue-200 transition duration-300">Privacy Policy</a> |
-                <a href="#" class="text-blue-400 hover:text-blue-200 transition duration-300">Terms of Service</a>
-            </p>
-        </div>
-    </footer>
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1); // Obtiene el ID sin el '#'
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Script para el Carrusel
-        const carouselImages = document.querySelectorAll('#carousel-images .carousel-image');
-        let currentImageIndex = 0;
-
-        function showImage(index) {
-            // Oculta todas las imágenes
-            carouselImages.forEach(img => img.classList.remove('active'));
-            // Muestra la imagen actual
-            carouselImages[index].classList.add('active');
-        }
-
-        function nextImage() {
-            currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
-            showImage(currentImageIndex);
-        }
-
-        // Inicializa el carrusel mostrando la primera imagen
-        if (carouselImages.length > 0) {
-            showImage(currentImageIndex);
-        }
-
-        // Inicia el ciclo automático del carrusel
-        setInterval(nextImage, 5000); // Cambia de imagen cada 5 segundos
-
-        // Script para obtener el último video de YouTube
-        async function fetchLatestYouTubeVideo() {
-            // Replace with your YouTube channel ID
-            const channelId = 'UCBGcMqENptfdY3p34QQSeQw'; // Example: Replace with actual channel ID for IGC Comayagua
-            const apiKey = 'AIzaSyBh57ErTIJOah8bfq76pwTQiE7Bi1J_gwc'; // Canvas will automatically provide this at runtime
-
-            // YouTube Data API v3 endpoint for searching channel videos
-            const apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=1&type=video`;
-
-            try {
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-
-                if (data.items && data.items.length > 0) {
-                    const latestVideo = data.items[0];
-                    const videoId = latestVideo.id.videoId;
-                    const videoTitle = latestVideo.snippet.title;
-                    const videoDescription = latestVideo.snippet.description;
-                    const publishedAt = new Date(latestVideo.snippet.publishedAt).toLocaleDateString('es-ES', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    });
-                    const thumbnailUrl = latestVideo.snippet.thumbnails.high.url; // 'high' for better quality
-
-                    // Update the HTML elements
-                    document.getElementById('latest-youtube-thumbnail').src = thumbnailUrl;
-                    document.getElementById('latest-video-title').textContent = videoTitle;
-                    document.getElementById('latest-video-date').textContent = `Fecha: ${publishedAt}`;
-                    document.getElementById('latest-video-description').textContent = videoDescription;
-                    document.getElementById('latest-video-youtube-link').href = `https://www.youtube.com/watch?v=${videoId}`;
-                } else {
-                    console.log('No se encontraron videos recientes.');
-                    document.getElementById('latest-video-title').textContent = 'No hay videos recientes disponibles.';
-                    document.getElementById('latest-video-description').textContent = 'Por favor, intente de nuevo más tarde.';
-                    document.getElementById('latest-youtube-thumbnail').src = 'https://placehold.co/400x300/F0F4F8/334155?text=Video+No+Encontrado';
-                }
-            } catch (error) {
-                console.error('Error al obtener el último video de YouTube:', error);
-                document.getElementById('latest-video-title').textContent = 'Error al cargar el video.';
-                document.getElementById('latest-video-description').textContent = 'Verifique su conexión o intente más tarde.';
-                document.getElementById('latest-youtube-thumbnail').src = 'https://placehold.co/400x300/F0F4F8/334155?text=Error+de+Carga';
-            }
-        }
-
-        // Call the function when the window loads
-        window.onload = fetchLatestYouTubeVideo;
-    </script>
-</body>
-</html>
+                    <div class="bg-white shadow-lg p-6 border-2 border-white rounded-lg">
+                        <div class="responsive-embed-container" style="padding-bottom: 700px; sm:padding-bottom: 75%; md:padding-bottom: 56.25%;"> <iframe sr
