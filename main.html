@@ -129,6 +129,73 @@
                 transform: rotate(-5deg) scale(1.05); /* Ligeramente más grande */
             }
         }
+
+        /* Estilos para las tarjetas de eventos del calendario */
+        .event-card {
+            background-color: #FFFFFF;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border: 4px solid #FFFFFF; /* Borde blanco para que coincida con otros elementos */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .event-card h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a202c; /* text-gray-900 */
+            margin-bottom: 0.5rem;
+        }
+
+        .event-card p {
+            font-size: 0.9rem;
+            color: #4a5568; /* text-gray-700 */
+            margin-bottom: 0.5rem;
+        }
+
+        .event-card .event-date {
+            font-weight: 700;
+            color: #2b6cb0; /* blue-700 */
+        }
+
+        /* Estilo específico para la ubicación y hora del evento: ahora negro */
+        .event-card .event-time,
+        .event-card .event-location {
+            color: #1a202c; /* Negro */
+            font-size: 0.8rem; /* Tamaño de fuente más pequeño para la ubicación */
+        }
+
+        /* Contenedor para la imagen del evento con relación de aspecto */
+        .event-image-container {
+            width: 100%;
+            position: relative;
+            padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+            overflow: hidden;
+            border-radius: 0.25rem; /* Bordes ligeramente redondeados para la imagen */
+            margin-bottom: 1rem; /* Espacio debajo de la imagen */
+        }
+
+        .event-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Estilo para el botón "Agregar a Calendario" para evitar que el ícono se rompa */
+        .add-to-calendar-button {
+            white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+            display: inline-flex; /* Permite alinear el texto y el ícono en una sola línea */
+            align-items: center; /* Centra verticalmente el texto y el ícono */
+            justify-content: center; /* Centra horizontalmente el contenido */
+        }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -261,7 +328,7 @@
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Lecciones de Discipulado</h4>
                                 <p class="text-gray-700 leading-relaxed mb-4">Guías detalladas para tu crecimiento y desarrollo espiritual.</p>
-                                <a href="https://drive.google.com/drive/folders/195n8G1thwng7q9-jdQFx4yzeIqpLhrOH?usp=sharing" target="_blank" class="border border-[#b54400] text-[#b54400] py-2 px-6 rounded-lg hover:bg-[#b54400] hover:text-white transition-colors duration-200 shadow-md">Descargar Lecciones</a>
+                                <a href="https://drive.google.com/drive/folders/195n8G1thwng7q9-jdQFx4yzeIqpLhrOH?usp=sharing" target="_blank" class="border border-[#b54400] text-[#b54400] py-2 px-6 rounded-lg hover:bg-[#b54400] hover:text-white transition-colors duration-200 shadow-md whitespace-nowrap">Descargar Lecciones</a>
                             </div>
                         </div>
                         <div class="p-6 bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:hover:shadow-xl border-4 border-white">
@@ -281,9 +348,9 @@
             <section id="calendario" class="py-16 bg-gray-100 animated-pattern-bg">
                 <div class="container mx-auto px-4 max-w-5xl">
                     <h3 class="text-4xl font-bold text-gray-800 text-center mb-12 hero-heading-font">Nuestro Calendario de Eventos</h3>
-                    <div class="bg-white shadow-lg p-6 border-2 border-white rounded-lg">
-                        <div class="responsive-embed-container" style="padding-bottom: 700px; sm:padding-bottom: 75%; md:padding-bottom: 56.25%;"> <iframe src="https://calendar.google.com/calendar/embed?src=6a192295baa35bc8e37bc65dd6ea2e548ebc9c466b9a7ffecc0bb3f81b60fdd4%40group.calendar.google.com&ctz=America%2FTegucigalpa" style="border:solid 1px #777" frameborder="0" scrolling="no"></iframe>
-                        </div>
+                    <div id="events-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Los eventos del calendario se cargarán aquí dinámicamente -->
+                        <p class="col-span-full text-center text-gray-600">Cargando eventos...</p>
                     </div>
                 </div>
             </section>
@@ -294,7 +361,7 @@
                 <img src="images\logo2.svg" alt="Logo de Gran Comisión Comayagua" class="mx-auto md:mx-0 mb-4 rounded-md" width="150" height="100">
                 <h4 class="text-xl font-bold mb-4 text-white">Gran Comisión Comayagua</h4>
                 <p class="text-gray-400 text-sm">Cámara de Comercio, Salida a La Libertad, Comayagua.</p>
-                <p class="text-400 text-sm">igccomayagua@gmail.com</p>
+                <p class="text-gray-400 text-sm">igccomayagua@gmail.com</p>
                 <p class="text-gray-400 text-sm">+504 9989-2913</p>
             </div>
             <div>
@@ -363,7 +430,7 @@
             const channelId = 'UCBGcMqENptfdY3p34QQSeQw';
             // Por favor, reemplaza 'TU_CLAVE_DE_API_DE_YOUTUBE_AQUI' con tu clave de API de Google válida.
             // Asegúrate de que la 'YouTube Data API v3' esté habilitada para tu proyecto en Google Cloud Console.
-            const apiKey = 'AIzaSyAf7y3SVKsFGukX4ho9leVJ46tY59laFmQ'; 
+            const apiKey = 'TU_CLAVE_DE_API_DE_YOUTUBE_AQUI'; 
 
             const apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=1&type=video`;
 
@@ -416,8 +483,123 @@
                 }
         }
 
-        window.onload = fetchLatestYouTubeVideo;
+        // Script para obtener y mostrar los eventos del calendario de Google
+        async function fetchGoogleCalendarEvents() {
+            const calendarId = '6a192295baa35bc8e37bc65dd6ea2e548ebc9c466b9a7ffecc0bb3f81b60fdd4@group.calendar.google.com';
+            // Clave de API de Google Calendar
+            const apiKey = 'AIzaSyAf7y3SVKsFGukX4ho9leVJ46tY59laFmQ'; 
+            
+            const eventsContainer = document.getElementById('events-container');
+            eventsContainer.innerHTML = '<p class="col-span-full text-center text-gray-600">Cargando eventos...</p>'; // Mostrar mensaje de carga
+
+            const now = new Date();
+            const timeMin = now.toISOString(); // Obtener eventos desde ahora en adelante
+
+            // maxResults=3 para mostrar solo los 3 eventos más recientes
+            const apiUrl = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${apiKey}&timeMin=${timeMin}&singleEvents=true&orderBy=startTime&maxResults=3`;
+
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+
+                eventsContainer.innerHTML = ''; // Limpiar mensaje de carga
+
+                if (data.items && data.items.length > 0) {
+                    data.items.forEach(event => {
+                        const eventTitle = event.summary || 'Sin título';
+                        let eventDate = 'Fecha no disponible';
+                        let eventTime = '';
+                        let eventLocation = event.location || '';
+                        let eventDescription = event.description || '';
+                        let eventImageUrl = 'https://placehold.co/400x300/F0F4F8/334155?text=Evento'; // Imagen por defecto
+
+                        // Asignar imagen según el título del evento
+                        if (eventTitle.toLowerCase().includes('reunión general')) {
+                            eventImageUrl = 'images/evento_reu_general.jpg';
+                        } else if (eventTitle.toLowerCase().includes('180')) {
+                            eventImageUrl = 'images/evento_180.jpg';
+                        } else if (eventTitle.toLowerCase().includes('reunión de hombres')) {
+                            eventImageUrl = 'images/evento_reu_hombres.jpg';
+                        } else if (eventTitle.toLowerCase().includes('evangelismo')) { // Nuevo caso para Evangelismo
+                            eventImageUrl = 'images/evento_evangelismo.jpg';
+                        }
+
+                        // Resumir la ubicación si coincide con la cadena larga
+                        const longLocation = "Iglesia Gran Comisión • Comayagua, Salida a La Libertad, Cámara de Comercio e Industrias de Comayagua, contiguo a, 12101 Comayagua, Honduras";
+                        if (eventLocation === longLocation) {
+                            eventLocation = "Auditorio Gran Comisión Comayagua";
+                        }
+
+                        let googleCalendarLink = '#'; // Default empty link
+
+                        if (event.start.dateTime && event.end.dateTime) {
+                            // Evento con hora específica
+                            const startDateTime = new Date(event.start.dateTime);
+                            const endDateTime = new Date(event.end.dateTime);
+                            eventDate = startDateTime.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+                            eventTime = startDateTime.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', hour12: true });
+
+                            // Format dates for Google Calendar URL (YYYYMMDDTHHMMSSZ)
+                            const formatGoogleDate = (date) => {
+                                return date.toISOString().replace(/-|:|\.\d{3}/g, '');
+                            };
+                            const googleStartDate = formatGoogleDate(startDateTime);
+                            const googleEndDate = formatGoogleDate(endDateTime);
+
+                            googleCalendarLink = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${googleStartDate}/${googleEndDate}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}&sf=true&output=xml`;
+
+                        } else if (event.start.date) {
+                            // Evento de día completo
+                            const startDate = new Date(event.start.date);
+                            // For all-day events in Google Calendar, end date is the day after the start date
+                            const endDate = new Date(startDate);
+                            endDate.setDate(startDate.getDate() + 1);
+
+                            eventDate = startDate.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+                            eventTime = 'Todo el día';
+
+                            // Format dates for Google Calendar URL (YYYYMMDD/YYYYMMDD for all-day)
+                            const formatGoogleDateAllDay = (date) => {
+                                return date.toISOString().split('T')[0].replace(/-/g, '');
+                            };
+                            const googleStartDateAllDay = formatGoogleDateAllDay(startDate);
+                            const googleEndDateAllDay = formatGoogleDateAllDay(endDate);
+
+                            googleCalendarLink = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${googleStartDateAllDay}/${googleEndDateAllDay}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}&sf=true&output=xml`;
+                        }
+
+                        const eventCard = `
+                            <div class="event-card">
+                                <div class="event-image-container">
+                                    <img src="${eventImageUrl}" alt="Imagen de ${eventTitle}">
+                                </div>
+                                <div class="p-6">
+                                    <h4>${eventTitle}</h4>
+                                    <p class="event-date"><i class="fas fa-calendar-alt mr-2"></i>${eventDate}</p>
+                                    <p class="event-time"><i class="fas fa-clock mr-2"></i>${eventTime}</p>
+                                    ${eventLocation ? `<p class="event-location"><i class="fas fa-map-marker-alt mr-2"></i>${eventLocation}</p>` : ''}
+                                    ${eventDescription ? `<p class="text-gray-600 mt-2">${eventDescription.substring(0, 100)}${eventDescription.length > 100 ? '...' : ''}</p>` : ''}
+                                    <a href="${googleCalendarLink}" target="_blank" class="border border-gray-700 text-gray-700 py-2 px-6 rounded-lg hover:bg-gray-700 hover:text-white transition-colors duration-200 shadow-md mt-4 inline-block add-to-calendar-button">Agregar a Calendario <i class="fas fa-plus-circle ml-1 text-xs"></i></a>
+                                </div>
+                            </div>
+                        `;
+                        eventsContainer.insertAdjacentHTML('beforeend', eventCard);
+                    });
+                } else {
+                    eventsContainer.innerHTML = '<p class="col-span-full text-center text-gray-600">No se encontraron eventos próximos.</p>';
+                }
+
+            } catch (error) {
+                console.error('Error al obtener los eventos del calendario:', error);
+                eventsContainer.innerHTML = '<p class="col-span-full text-center text-red-500">Error al cargar los eventos del calendario. Por favor, verifica tu clave de API o inténtalo más tarde.</p>';
+            }
+        }
+
+
+        window.onload = () => {
+            fetchLatestYouTubeVideo();
+            fetchGoogleCalendarEvents(); // Llama a la nueva función para cargar los eventos del calendario
+        };
     </script>
 </body>
 </html>
-
