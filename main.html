@@ -57,7 +57,6 @@
             width: 100%;
             height: 0;
             overflow: hidden;
-            /* Se eliminó border-radius: 0.5rem; para las esquinas afiladas del calendario incrustado */
         }
 
         .responsive-embed-container iframe {
@@ -135,7 +134,7 @@
             background-color: #FFFFFF;
             border-radius: 0.5rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
+            /* Eliminado padding: 1.5rem; para la imagen pegada al borde */
             border: 4px solid #FFFFFF; /* Borde blanco para que coincida con otros elementos */
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
@@ -171,23 +170,14 @@
         }
 
         /* Contenedor para la imagen del evento con relación de aspecto */
-        .event-image-container {
+        /* Ya no es necesario un contenedor específico para la imagen del evento, la imagen va directa en la tarjeta */
+        /* .event-image-container {
             width: 100%;
+            height: 12rem;
             position: relative;
-            padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
             overflow: hidden;
-            border-radius: 0.25rem; /* Bordes ligeramente redondeados para la imagen */
-            margin-bottom: 1rem; /* Espacio debajo de la imagen */
-        }
-
-        .event-image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+            margin-bottom: 1rem;
+        } */
 
         /* Estilo para el botón "Agregar a Calendario" para evitar que el ícono se rompa */
         .add-to-calendar-button {
@@ -241,21 +231,21 @@
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div class="p-6 bg-blue-50 rounded-lg shadow-lg flex flex-col items-center text-center border-4 border-white">
                             <i class="fas fa-church text-blue-600 text-5xl mb-4"></i>
-                            <h4 class="text-2xl font-semibold text-gray-800 mb-3">Soy Nuevo Aquí</h4>
-                            <p class="text-gray-600 mb-4">Descubre qué esperar en tu primera visita y cómo puedes conectar con nosotros.</p>
+                            <h4 class="text-2xl font-semibold text-gray-800 mb-3">¿Cómo es Granco?</h4>
+                            <p class="text-gray-600 mb-4">¿Qué es lo que deberías expectar de tu visita con nosotros?</p>
                             <a href="#" class="text-blue-600 hover:underline font-medium">Más información →</a>
                         </div>
                         <div class="p-6 bg-green-50 rounded-lg shadow-lg flex flex-col items-center text-center border-4 border-white">
                             <i class="fas fa-handshake text-green-600 text-5xl mb-4"></i>
                             <h4 class="text-2xl font-semibold text-gray-800 mb-3">Encuentra un Grupo de Crecimiento</h4>
-                            <p class="text-gray-600 mb-4">Encuentra una comunidad donde puedas crecer en tu fe y formar amistades.</p>
+                            <p class="text-gray-600 mb-4">Es un espacio seguro diseñado para fortalecer tu fe y conocer amistades para toda la vida.</p>
                             <a href="https://forms.gle/2pQe1TpR1u5W111K7" target="_blank" class="text-blue-600 hover:underline font-medium">Encuentra un Grupo →</a>
                         </div>
                         <div class="p-6 bg-purple-50 rounded-lg shadow-lg flex flex-col items-center text-center border-4 border-white">
                             <i class="fas fa-hand-holding-heart text-purple-600 text-5xl mb-4"></i>
-                            <h4 class="text-2xl font-semibold text-gray-800 mb-3">Lucas 10</h4>
-                            <p class="text-gray-600 mb-4">Ministerio de ayuda para personas en necesidad.</p>
-                            <a href="#" class="text-blue-600 hover:underline font-medium">Conoce Más →</a>
+                            <h4 class="text-2xl font-semibold text-gray-800 mb-3">Proyección Social</h4>
+                            <p class="text-gray-600 mb-4">Servicios que ofrecemos a nuestra comunidad local.</p>
+                            <a href="proyectos.html" class="text-blue-600 hover:underline font-medium">Conoce Más →</a>
                         </div>
                     </div>
                 </div>
@@ -266,7 +256,7 @@
                     <h3 class="text-4xl font-bold text-gray-800 text-center mb-12 section-title-font">Conferencias</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
-                            <div id="latest-video-thumbnail-container" class="w-full h-48 relative overflow-hidden flex items-center justify-center">
+                            <div id="latest-video-thumbnail-container" class="w-full h-48 relative overflow-hidden flex items-center justify-center rounded-t-lg">
                                 <div id="latest-video-blurred-bg" class="absolute inset-0 bg-cover bg-center" style="filter: blur(8px);"></div>
                                 <img id="latest-youtube-thumbnail" src="https://placehold.co/400x300/F0F4F8/334155?text=Cargando+Video..." alt="Miniatura del último video de YouTube" class="relative z-10 w-full h-full object-cover">
                                 <span class="latest-tag">Más reciente</span> <!-- Tag "Más reciente" añadido aquí -->
@@ -280,7 +270,7 @@
                         </div>
 
                         <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
-                            <img src="images\confe_vertical.jpg" alt="Imagen de Conferencia Vertical 2025" class="w-full h-48 object-cover">
+                            <img src="images\confe_vertical.jpg" alt="Imagen de Conferencia Vertical 2025" class="w-full h-48 object-cover rounded-t-lg">
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Vertical 2025</h4>
                                 <p class="text-gray-600 text-sm mb-3">Abril 16-18, 2025. SPS Honduras</p>
@@ -290,7 +280,7 @@
                         </div>
 
                         <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
-                            <img src="images\confe_serie.jpg" alt="Imagen de Serie Bíblica" class="w-full h-48 object-cover">
+                            <img src="images\confe_serie.jpg" alt="Imagen de Serie Bíblica" class="w-full h-48 object-cover rounded-t-lg">
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Serie: "Entre dos mundos"</h4>
                                 <p class="text-gray-600 text-sm mb-3">Última serie de predicaciones.</p>
@@ -311,33 +301,27 @@
                 <div class="container mx-auto px-4 max-w-5xl">
                     <h3 class="text-4xl font-bold text-gray-800 text-center mb-12 section-title-font">Recursos para ti</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <div class="p-6 bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
-                            <div class="w-full relative" style="padding-bottom: 56.25%;"> <!-- Contenedor para mantener la relación de aspecto 16:9 -->
-                                <img src="images\recursos_podcast.jpg" alt="Image of Spotify Podcast" class="absolute inset-0 w-full h-full object-cover">
-                            </div>
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
+                            <img src="images\recursos_podcast.jpg" alt="Image of Spotify Podcast" class="w-full h-48 object-cover rounded-t-lg">
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Conferencias en Spotify</h4>
-                                <p class="text-gray-700 leading-relaxed mb-4">Escucha nuestras predicaciones y mensajes directamente en Spotify.</p>
+                                <p class="text-gray-700 leading-relaxed mb-4">Escucha en-demand nuestros temas directamente en Spotify.</p>
                                 <a href="https://open.spotify.com/show/0ist1nXGrP3fI7Hw3CmH6t?si=f07f7bc0178a4409" target="_blank" class="border border-green-600 text-green-600 py-2 px-6 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200 shadow-md">Escuchar en Spotify</a>
                             </div>
                         </div>
-                        <div class="p-6 bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
-                            <div class="w-full relative" style="padding-bottom: 56.25%;"> <!-- Contenedor para mantener la relación de aspecto 16:9 -->
-                                <img src="images\recursos_discipulado.jpg" alt="Image of Discipleship Lessons" class="absolute inset-0 w-full h-full object-cover">
-                            </div>
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:shadow-xl border-4 border-white">
+                            <img src="images\recursos_discipulado.jpg" alt="Image of Discipleship Lessons" class="w-full h-48 object-cover rounded-t-lg">
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Lecciones de Discipulado</h4>
-                                <p class="text-gray-700 leading-relaxed mb-4">Guías detalladas para tu crecimiento y desarrollo espiritual.</p>
+                                <p class="text-gray-700 leading-relaxed mb-4">Material para comenzar tu vida en Cristo.</p>
                                 <a href="https://drive.google.com/drive/folders/195n8G1thwng7q9-jdQFx4yzeIqpLhrOH?usp=sharing" target="_blank" class="border border-[#b54400] text-[#b54400] py-2 px-6 rounded-lg hover:bg-[#b54400] hover:text-white transition-colors duration-200 shadow-md whitespace-nowrap">Descargar Lecciones</a>
                             </div>
                         </div>
-                        <div class="p-6 bg-gray-50 rounded-lg shadow-lg overflow-hidden transition duration-300 hover:hover:shadow-xl border-4 border-white">
-                            <div class="w-full relative" style="padding-bottom: 56.25%;"> <!-- Contenedor para mantener la relación de aspecto 16:9 -->
-                                <img src="images\recursos_evangelismo.jpg" alt="Image of Evangelism Manual" class="absolute inset-0 w-full h-full object-cover">
-                            </div>
+                        <div class="bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 hover:hover:shadow-xl border-4 border-white">
+                            <img src="images\recursos_evangelismo.jpg" alt="Image of Evangelism Manual" class="w-full h-48 object-cover rounded-t-lg">
                             <div class="p-6">
                                 <h4 class="text-2xl font-semibold text-gray-800 mb-2">Manual de Evangelismo</h4>
-                                <p class="text-gray-700 leading-relaxed mb-4">Herramientas prácticas para compartir el evangelio y servir a tu comunidad.</p>
+                                <p class="text-gray-700 leading-relaxed mb-4">Guía para compartir el evangelio de una forma práctica y sencilla.</p>
                                 <a href="https://drive.google.com/drive/folders/1X79rBpLzgLRS4o81b8NLO1gOEm3HbEDk?usp=sharing" target="_blank" class="border border-[#0059b5] text-[#0059b5] py-2 px-6 rounded-lg hover:bg-[#0059b5] hover:text-white transition-colors duration-200 shadow-md">Descargar Manual</a>
                             </div>
                         </div>
@@ -347,7 +331,7 @@
 
             <section id="calendario" class="py-16 bg-gray-100 animated-pattern-bg">
                 <div class="container mx-auto px-4 max-w-5xl">
-                    <h3 class="text-4xl font-bold text-gray-800 text-center mb-12 hero-heading-font">Nuestro Calendario de Eventos</h3>
+                    <h3 class="text-4xl font-bold text-gray-800 text-center mb-12 hero-heading-font">Lo que sucede en Granco</h3>
                     <div id="events-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         <!-- Los eventos del calendario se cargarán aquí dinámicamente -->
                         <p class="col-span-full text-center text-gray-600">Cargando eventos...</p>
@@ -570,9 +554,7 @@
 
                         const eventCard = `
                             <div class="event-card">
-                                <div class="event-image-container">
-                                    <img src="${eventImageUrl}" alt="Imagen de ${eventTitle}">
-                                </div>
+                                <img src="${eventImageUrl}" alt="Imagen de ${eventTitle}" class="w-full h-48 object-cover rounded-t-lg"> <!-- Image directly inside card with rounded-t-lg -->
                                 <div class="p-6">
                                     <h4>${eventTitle}</h4>
                                     <p class="event-date"><i class="fas fa-calendar-alt mr-2"></i>${eventDate}</p>
